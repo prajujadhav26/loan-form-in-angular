@@ -1,0 +1,28 @@
+<div class="container text-center mt-5" style="border: 2px solid; height: 580px; width: 400px;">
+  <form [formGroup]="formData" (ngSubmit)="submitData(formData.value)">
+    <label for="">City:-</label><br>
+    <input type="text" name="city" formControlName="city" [(ngModel)]="city"><br><br>
+
+    <label for="">Pan Number:-</label><br>
+    <input type="text" name="panNumber" formControlName="panNumber" [(ngModel)]="panNumber"><br><br>
+
+    <label for="">Full Name:-</label><br>
+    <input type="text" name="fullname" formControlName="fullname" [(ngModel)]="fullname"><br><br>
+
+    <label for="">Email:-</label><br>
+    <input type="email" name="email" formControlName="email" [(ngModel)]="email"><br><br>
+
+    <label for="">Mobile No.:-</label><br>
+    <input type="number" name="mobile" formControlName="mobile" [(ngModel)]="mobile"
+      (input)="mobiledata($event)"><br><br>
+    <button type="button" class="btn btn-primary" (click)="resendotp($event)" [disabled]="disableresend == true">Resend OTP</button><br><br>
+    <p *ngIf="isresend == true">
+      <countdown [config]="{leftTime:30}"></countdown>
+    </p>
+
+    <label for="">OTP:-</label><br>
+    <input type="text" name="otp" formControlName="otp" [(ngModel)]="otp" [readonly]="isread==true"><br><br>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!formData.valid">Submit</button>
+  </form>
+</div>
